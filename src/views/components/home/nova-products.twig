@@ -1,0 +1,19 @@
+<section component-id="{{ componentId }}" class="nova-section">
+  <div class="nova-container">
+    <div class="nova-section-head">
+      <div>
+        <p class="nova-eyebrow">CURATED</p>
+        <h2>{{ component.title }}</h2>
+        {% if component.description %}<p>{{ component.description }}</p>{% endif %}
+      </div>
+    </div>
+    <salla-products-slider
+      {% if component.products|length %}
+        source="selected"
+        source-value="[{{ component.products|map((product) => product.id)|join(',') }}]"
+      {% endif %}
+      block-title=" "
+      slider-id="nova-products-{{ position }}">
+    </salla-products-slider>
+  </div>
+</section>
