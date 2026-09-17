@@ -1,0 +1,20 @@
+{% extends "layouts.master" %}
+
+{% block content %}
+<section class="nova-hero">
+  <div class="nova-container nova-hero-grid">
+    <div class="nova-hero-copy">
+      <p class="nova-eyebrow">NOVA PERFUMES</p>
+      <h1>{{ theme.settings.get('hero_title', 'رائحة تُحفظ في الذاكرة.') }}</h1>
+      <p>{{ theme.settings.get('hero_description', 'عطور مختارة بطابع شرقي حديث، مصممة للحضور اليومي والمناسبات الخاصة.') }}</p>
+      <a class="nova-btn" href="{{ theme.settings.get('hero_button_url', '/products') }}">{{ theme.settings.get('hero_button_text', 'تسوق الآن') }}</a>
+    </div>
+    <div class="nova-hero-art" aria-hidden="true">
+      <div class="nova-glow"></div>
+      <div class="nova-bottle"><span>NOVA</span><small>NOIR</small></div>
+    </div>
+  </div>
+</section>
+
+{% component home %}
+{% endblock %}
