@@ -1,0 +1,17 @@
+<footer class="nova-footer">
+  <div class="nova-container nova-footer-grid">
+    <div>
+      <div class="nova-footer-brand">{{ store.name }}</div>
+      <p>{{ store.description ?: theme.settings.get('footer_note', 'NOVA Perfumes') }}</p>
+    </div>
+    <div class="nova-footer-links">
+      {% if store.contacts.email %}<a href="mailto:{{ store.contacts.email }}">{{ store.contacts.email }}</a>{% endif %}
+      {% if store.contacts.whatsapp %}<a href="https://wa.me/{{ store.contacts.whatsapp }}" target="_blank" rel="noreferrer">WhatsApp</a>{% endif %}
+      {% if store.social.instagram %}<a href="{{ store.social.instagram }}" target="_blank" rel="noreferrer">Instagram</a>{% endif %}
+    </div>
+  </div>
+  <div class="nova-container nova-footer-bottom">
+    <span>© {{ 'now'|date('Y') }} {{ store.name }}</span>
+    <span>Powered by Salla Twilight</span>
+  </div>
+</footer>
