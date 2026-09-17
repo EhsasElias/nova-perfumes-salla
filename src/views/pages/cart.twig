@@ -1,0 +1,69 @@
+{% extends "layouts.master" %}
+
+{% block content %}
+<section class="nova-cart-page nova-container">
+  <div class="nova-product-breadcrumb"><salla-breadcrumb></salla-breadcrumb></div>
+  <div class="nova-page-head-row">
+    <div>
+      <p class="nova-eyebrow">NOVA BAG</p>
+      <h1>{{ trans('blocks.header.cart') }}</h1>
+    </div>
+  </div>
+
+  <salla-conditional-offer data-testid="store-cart-conditional-offer"></salla-conditional-offer>
+
+  <div class="nova-cart-grid">
+    <div class="nova-cart-items">
+      {% for item in cart.items %}
+        <form onchange="salla.form.onChange('cart.updateItem', event)" id="item-{{ item.id }}" class="nova-cart-item">
+          <input type="hidden" name="id" value="{{ item.id }}">
+          <a class="nova-cart-image" href="{{ item.url }}">
+            <img src="{{ item.product_image }}" alt="{{ item.product_name }}" loading="{{ loop.first ? 'eager' : 'lazy' }}">
+          </a>
+          <div class="nova-cart-info">
+            <a href="{{ item.url }}"><h2>{{ item.product_name }}</h2></a>
+            <p>{{ item.price|money }}</p>
+            {% include 'pages.partials.product.options' with { product: item } %}
+            <div class="nova-cart-item-actions">
+              {% if item.is_hidden_quantity %}
+                <span>{{ item.quantity }}</span>
+                <input type="hidden" value="{{ item.quantity }}" name="quantity">
+              {% else %}
+                <salla-quantity-input cart-item-id="{{ item.id }}" max="{{ item.max_quantity }}" value="{{ item.quantity }}" name="quantity"></salla-quantity-input>
+              {% endif %}
+              <salla-button type="button" color="danger" fill="outline" onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#item-{{ item.id }}').remove())">
+                {{ trans('common.elements.delete') }}
+              </salla-button>
+            </div>
+          </div>
+          <div class="nova-cart-total">{{ item.total|money }}</div>
+        </form>
+      {% else %}
+        <div class="nova-empty-cart">
+          <i class="sicon-shopping-bag"></i>
+          <p>{{ trans('pages.cart.empty_cart') }}</p>
+          <a class="nova-btn" href="{{ link('/') }}">{{ trans('common.elements.back_home') }}</a>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if cart.items|length %}
+      <aside class="nova-cart-summary">
+        {% if cart.free_shipping_bar %}
+          <div class="nova-free-shipping">
+            <strong>{{ trans('pages.cart.free_shipping') }}</strong>
+            <p>{{ cart.free_shipping_bar.has_free_shipping ? trans('pages.cart.has_free_shipping') : trans('pages.cart.free_shipping_alert', {'amount': cart.free_shipping_bar.remaining|money})|raw }}</p>
+            <div class="nova-progress"><span style="width:{{ cart.free_shipping_bar.percent }}%"></span></div>
+          </div>
+        {% endif %}
+
+        {% if store.settings.cart.apply_coupon_enabled %}
+          <salla-cart-coupons></salla-cart-coupons>
+        {% endif %}
+
+        <salla-cart-summary-card data-testid="store-cart-summary"></salla-cart-summary-card>
+      </aside>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
