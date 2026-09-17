@@ -1,6 +1,8 @@
 {
-  "name": {"ar": "نوفا للعطور", "en": "NOVA Perfumes"},
+  "version": "1.0.0",
+  "name": {"ar": "نوفا", "en": "NOVA"},
   "repository": "https://github.com/EhsasElias/nova-perfumes-salla",
+  "support_url": "https://github.com/EhsasElias/nova-perfumes-salla/issues",
   "author_email": "83452962+EhsasElias@users.noreply.github.com",
   "features": [
     "fonts",
@@ -67,7 +69,16 @@
       "fields": [
         {"id": "title", "type": "string", "label": "العنوان", "value": "الأكثر مبيعاً"},
         {"id": "description", "type": "string", "label": "الوصف", "value": "اختيارات العملاء لهذا الأسبوع"},
-        {"id": "products", "type": "products", "label": "المنتجات", "required": false}
+        {
+          "id": "products",
+          "type": "items",
+          "format": "dropdown-list",
+          "label": "المنتجات",
+          "source": "Products",
+          "multichoice": true,
+          "required": false,
+          "maxLength": 8
+        }
       ]
     },
     {
