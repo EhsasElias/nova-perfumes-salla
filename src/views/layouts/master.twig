@@ -23,11 +23,11 @@
 </head>
 <body id="app" class="nova-theme">
   {% hook 'body:start' %}
-  {% include 'components.header' %}
+  {% include 'components/header.twig' %}
   <main id="main-content">
     {% block content %}{% endblock %}
   </main>
-  {% include 'components.footer' %}
+  {% include 'components/footer.twig' %}
   {% hook 'body:end' %}
 
   <salla-search></salla-search>
