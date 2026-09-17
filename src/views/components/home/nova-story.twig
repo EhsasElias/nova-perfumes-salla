@@ -1,0 +1,13 @@
+<section component-id="{{ componentId }}" class="nova-story">
+  <div class="nova-container nova-story-grid">
+    <div class="nova-story-art">
+      <div class="nova-glow"></div>
+      <div class="nova-bottle nova-bottle-small"><span>NOVA</span><small>ATELIER</small></div>
+    </div>
+    <div class="nova-story-copy">
+      <p class="nova-eyebrow">THE NOVA WAY</p>
+      <h2>{{ component.title }}</h2>
+      {% if component.description %}<p>{{ component.description }}</p>{% endif %}
+    </div>
+  </div>
+</section>
