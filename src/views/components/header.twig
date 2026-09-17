@@ -1,0 +1,36 @@
+<div class="nova-announcement">
+  {{ theme.settings.get('announcement_text', 'شحن مجاني للطلبات فوق 250 ر.س') }}
+</div>
+<header class="nova-header">
+  <div class="nova-container nova-header-inner">
+    <a class="nova-logo" href="{{ store.url }}" aria-label="{{ store.name }}">
+      {% if store.logo %}
+        <img src="{{ store.logo }}" alt="{{ store.name }}">
+      {% else %}
+        <span class="nova-logo-dot"></span><strong>{{ store.name }}</strong>
+      {% endif %}
+    </a>
+
+    {% if theme.settings.get('show_search', true) %}
+      <button class="nova-search" onclick="salla.event.dispatch('search::open')" type="button">
+        <i class="sicon-search"></i>
+        <span>{{ trans('common.search') }}</span>
+      </button>
+    {% endif %}
+
+    <nav class="nova-actions">
+      {% if store.settings.is_multilingual %}
+        <salla-localization-modal></salla-localization-modal>
+      {% endif %}
+      <salla-user-menu></salla-user-menu>
+      <a class="nova-cart-link" href="{{ link('cart') }}">
+        <i class="sicon-shopping-bag"></i>
+        <salla-cart-summary></salla-cart-summary>
+      </a>
+    </nav>
+  </div>
+
+  <div class="nova-container nova-menu-wrap">
+    <salla-menu></salla-menu>
+  </div>
+</header>
