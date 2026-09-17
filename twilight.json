@@ -1,0 +1,85 @@
+{
+  "name": {"ar": "نوفا للعطور", "en": "NOVA Perfumes"},
+  "repository": "https://github.com/EhsasElias/nova-perfumes-salla",
+  "author_email": "83452962+EhsasElias@users.noreply.github.com",
+  "features": [
+    "fonts",
+    "color",
+    "breadcrumb",
+    "filters",
+    "component-featured-products",
+    "component-products-slider"
+  ],
+  "settings": [
+    {
+      "id": "announcement_text",
+      "type": "string",
+      "label": "نص الشريط العلوي",
+      "description": "مثال: شحن مجاني للطلبات فوق 250 ر.س",
+      "value": "شحن مجاني للطلبات فوق 250 ر.س"
+    },
+    {
+      "id": "show_search",
+      "type": "boolean",
+      "label": "إظهار البحث في الهيدر",
+      "format": "switch",
+      "value": true,
+      "selected": true
+    },
+    {
+      "id": "hero_title",
+      "type": "string",
+      "label": "عنوان الواجهة الرئيسية",
+      "value": "رائحة تُحفظ في الذاكرة."
+    },
+    {
+      "id": "hero_description",
+      "type": "string",
+      "label": "وصف الواجهة الرئيسية",
+      "value": "عطور مختارة بطابع شرقي حديث، مصممة للحضور اليومي والمناسبات الخاصة."
+    },
+    {
+      "id": "hero_button_text",
+      "type": "string",
+      "label": "نص زر الواجهة",
+      "value": "تسوق الآن"
+    },
+    {
+      "id": "hero_button_url",
+      "type": "string",
+      "label": "رابط زر الواجهة",
+      "value": "/products"
+    },
+    {
+      "id": "footer_note",
+      "type": "string",
+      "label": "نص أسفل المتجر",
+      "value": "NOVA Perfumes"
+    }
+  ],
+  "components": [
+    {
+      "key": "nova-featured-products",
+      "title": {"ar": "منتجات نوفا المميزة", "en": "NOVA Featured Products"},
+      "icon": "sicon-star2",
+      "path": "home.nova-products",
+      "is_default": true,
+      "fields": [
+        {"id": "title", "type": "string", "label": "العنوان", "value": "الأكثر مبيعاً"},
+        {"id": "description", "type": "string", "label": "الوصف", "value": "اختيارات العملاء لهذا الأسبوع"},
+        {"id": "products", "type": "products", "label": "المنتجات", "required": false}
+      ]
+    },
+    {
+      "key": "nova-brand-story",
+      "title": {"ar": "قصة نوفا", "en": "NOVA Story"},
+      "icon": "sicon-image",
+      "path": "home.nova-story",
+      "is_default": true,
+      "fields": [
+        {"id": "title", "type": "string", "label": "العنوان", "value": "مصممة لتترك أثراً، لا مجرد رائحة."},
+        {"id": "description", "type": "string", "label": "الوصف", "value": "هوية عطرية بطابع شرقي حديث وتجربة تسوق بسيطة وأنيقة."}
+      ]
+    }
+  ]
+}
